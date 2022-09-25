@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [website, setWebsite] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(website);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Insert website to parse:</h2>
+      <form onSubmit={handleSubmit}>
+        <div className='input-website-field'>
+          <input
+            type="text" 
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+          />
+        </div>
+        <div className='submit-website-name'>
+          <input type="submit" />
+        </div>
+      </form>
     </div>
   );
 }
